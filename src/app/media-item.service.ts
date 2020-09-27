@@ -1,12 +1,5 @@
-import { Component } from '@angular/core';
+export class MediaItemService {
 
-@Component({
-  selector: 'mw-media-item-list',
-  templateUrl: './media-item-list.component.html',
-  styleUrls: ['./media-item-list.component.css']
-})
-export class MediaItemListComponent {
-  
   mediaItems = [
     {
       id: 1,
@@ -51,5 +44,19 @@ export class MediaItemListComponent {
       isFavorite: false
     }
   ];
-  onMediaItemDelete(mediaItem) { }
+
+  get() {
+      return this.mediaItems;
+  }
+
+  add(mediaItem) {
+    this.mediaItems.push(mediaItem);
+  }
+
+  delete(mediaItem) {
+      const index = this.mediaItems.indexOf(mediaItem);
+      if (index >= 0) {
+          this.mediaItems.splice(index, 1);
+      }
+  }
 }
